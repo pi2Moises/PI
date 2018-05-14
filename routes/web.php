@@ -39,8 +39,10 @@ Route::delete('/delete_curso/{id}', 'CursoController@destroy');
 //ROTAS DE PROFESSOR
 Route::get('/listaprofessor', 'ControllerProfessor@index');
 Route::get('/cad_professor', 'ControllerProfessor@create');
-Route::post('/cad_professor', 'ControllerProfessor@create2');
-Route::post('/insert_professor', 'CursoController@store');
-// Route::get('/edit_curso/{id}', 'CursoController@edit');
-// Route::post('/edit_curso/{id}', 'CursoController@update');
-// Route::delete('/delete_curso/{id}', 'CursoController@destroy');
+Route::post('/at_professor', 'ControllerProfessor@create2');
+Route::post('/at_profissional_professor', 'ControllerProfessor@create3');
+Route::post('/publicacoes_professor', 'ControllerProfessor@create4');
+Route::post('/insert_professor', 'ControllerProfessor@store');
+Route::get('/edit_professor/{id}', 'ControllerProfessor@edit');
+Route::post('/edit_professor/{id}', 'ControllerProfessor@update');
+Route::delete('/delete_professor/{id}', 'ControllerProfessor@destroy');

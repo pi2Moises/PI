@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\professor;
+use App\Professor;
 
 class ControllerProfessor extends Controller
 {
@@ -14,7 +14,9 @@ class ControllerProfessor extends Controller
      */
     public function index()
     {
-        return view('professor.listaprofessor');
+        $professores = Professor::paginate(5);
+        // $professores = Professor::all();
+        return view('professor.listaprofessor',compact('professores'));
     }
 
     /**
@@ -24,14 +26,40 @@ class ControllerProfessor extends Controller
      */
     public function create()
     {
+        session_start();
         return view('professor.create_professor');
     }
 
     
-    public function create2()
+    public function create2(Request $request)
     {
+        session_start();    
+        foreach ($request->all() as $key => $value) {
+            $_SESSION[$key] = $value;
+        }
         return view('professor.atuacao_professor');
     }
+
+    public function create3(Request $request)
+    {
+        session_start();    
+        foreach ($request->all() as $key => $value) {
+            $_SESSION[$key] = $value;
+        }
+        return view('professor.atuacao_profissional_professor');
+    }
+
+     public function create4(Request $request)
+    {
+        session_start();    
+        foreach ($request->all() as $key => $value) {
+            $_SESSION[$key] = $value;
+        }
+        // var_dump($_SESSION);    
+        // dd($_SESSION);    
+        return view('professor.publicacoes_professor');
+    } 
+
 
     /**
      * Store a newly created resource in storage.
@@ -41,7 +69,21 @@ class ControllerProfessor extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        session_start();
+        foreach ($request->all() as $key => $value) {
+            $_SESSION[$key] = $value;
+        }
+       
+        // dd($_SESSION);
+        $dados = $request->all();
+        professor::Create($_SESSION);
+        echo "<script language=JavaScript>";
+        echo "alert('Operação realizada com sucesso!');";
+        echo "window.location='/listaprofessor';";
+        echo "</script>";
+        session_destroy();        
+        // var_dump($_SESSION);
+
     }
 
     /**
@@ -63,7 +105,9 @@ class ControllerProfessor extends Controller
      */
     public function edit($id)
     {
-        //
+       $professor = Professor::findOrFail($id);
+
+        return view('professor.edit_professor',compact('professor'));
     }
 
     /**
@@ -75,7 +119,13 @@ class ControllerProfessor extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $professor = $request->all();
+        $id = Professor::findOrFail($id);
+        $id->update($professor);
+        echo "<script language=JavaScript>";
+        echo "alert('Operação realizada com sucesso!');";
+        echo "window.location='/listaprofessor';";
+        echo "</script>";
     }
 
     /**
@@ -86,6 +136,11 @@ class ControllerProfessor extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleta_profeesor = Professor::findOrFail($id);
+        $deleta_profeesor -> delete($id);
+        echo "<script language=JavaScript>";
+        echo "alert('Operação realizada com sucesso!');";
+        echo "window.location='/listaprofessor';";
+        echo "</script>";
     }
 }

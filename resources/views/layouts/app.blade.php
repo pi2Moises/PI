@@ -9,6 +9,10 @@
         <title>Projeto Integrador 3</title>
         <!-- Scripts -->
         <script src="{{ url('assets/js/app.js') }}" defer></script>
+        <script type="text/javascript" src="{{ url('assets/js/jquary.js') }}" defer></script>
+        <script type="text/javascript" src="{{ url('assets/js/jquery-3.2.1.min.js') }}" defer></script>
+        <script type="text/javascript" src="{{ url('assets/js/jquery.mask.min.js') }}" defer></script>
+        <script type="text/javascript" src="{{ url('assets/js/jquery.maskedinput.js') }}" defer></script>
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
@@ -20,6 +24,11 @@
                 background-color: #808080;
             }
         </style> --}}
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('#dt_inicio_vinc_curso').mask('99/99/9999',{placeholder:"00/00/0000"});
+            });
+        </script>
     </head>
     <body id="corpo" class="fundo">
         @guest
@@ -121,7 +130,7 @@
                 </style> --}}
                 <footer class="footer navbar-fixed-bottom" style="background-color: #e3f2fd;">
                    {{-- <div class="p-3 mb-2 bg-primary text-white"> --}}
-                       <div align="center">
+                       <div align="center"> 
                             <h4>PPC-3 | Projeto Pedagógico de Curso</h4>
                             
                             {{-- <p><b>AUTOR:</b> Moisés Alexandre de Souza</p> --}}
