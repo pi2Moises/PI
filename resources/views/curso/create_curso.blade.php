@@ -2,7 +2,7 @@
 @section('content')
 <form method="post" action="{{ url('/cad_curso') }}">
 	{{csrf_field()}}
-	<div class="form-group col-md-8" style="position:absolute; left:200px; top: 50px;">
+	<div class="form-group col-md-10" style="position:absolute; left:100px; top: 50px;">
 		<table class="table table-bordered">
 			<h3 align="center">CADASTRO DE CURSO</h3>
 			<thead>

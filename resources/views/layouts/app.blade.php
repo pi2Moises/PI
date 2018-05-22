@@ -80,7 +80,18 @@
                                     </li>
                                     {{-- <li role="separator" class="divider"></li> --}}
                                     <li>
-                                        <a class="dropdown-item" href="{{ url('milhar/cadmilhar') }}">Manter PPC</a>
+                                        <a class="dropdown-item" href="{{ url('listappc') }}">Manter PPC</a>
+                                    </li><li>
+                                        <a class="dropdown-item" href="{{ url('listaensino') }}">Manter PPC WEB</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url('listabibliografia')}}">Manter Bibliografia</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url('listaatividade')}}">Manter Atividade</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ url('listareuniao') }}">Manter Ata de Reunião</a>
                                     </li>
                                     {{-- <li role="separator" class="divider"></li> --}}
                                     <li>
