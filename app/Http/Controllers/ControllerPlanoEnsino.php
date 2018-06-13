@@ -45,6 +45,26 @@ class ControllerPlanoEnsino extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'ano'                               =>'required|integer',
+            'semestre'                          =>'required|integer',
+            'carga_horaria_curso'               =>'required|integer',
+            'ementa'                            =>'required',
+            'compet_hab'                        =>'required',
+            'metod_ensino'                      =>'required',
+            'avaliacao'                         =>'required',      
+        ],[
+            'ano.required'                      =>'O campo ANO é obrigatório.',
+            'ano.integer'                       =>'Digite apenas números no campo ANO.',
+            'semestre.required'                 =>'O campo SEMESTRE é obrigatório.',
+            'semestre.integer'                  =>'Digite apenas números no campo SEMESTRE.',
+            'carga_horaria_curso.required'      =>'O campo CARGA HORÁRIA SEMESTRAL é obrigatório.',
+            'ementa.required'                   =>'O campo EMENTA é obrigatório.',
+            'compet_hab.required'               =>'O campo COMPETÊNCIA E HABILIDADES é obrigatório.',
+            'metod_ensino.required'             =>'O campo METODOLOGIA DE ENSINO é obrigatório.',
+            'avaliacao.required'                =>'O campo AVALIAÇÃO é obrigatório.',
+            'bibliografia.required'             =>'O campo BIBLIOGRAFIA é obrigatório.',
+        ]);
         // dd($request->all());
         $dados = $request->all();
         Ensino::create($dados);

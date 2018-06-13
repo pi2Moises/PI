@@ -41,6 +41,33 @@ class Controllerppc extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'curso'                             =>'required',
+            'perfil_curso'                      =>'required',
+            'perfil_egresso'                    =>'required',
+            'acesso_curso'                      =>'required',
+            'rep_grafica'                       =>'required',
+            'sis_aval'                          =>'required',
+            'sis_aval_projeto_curso'            =>'required',
+            'tcc'                               =>'required',
+            'estagio_curricular'                =>'required',
+            'pol_atend'                         =>'required',
+
+        ],[
+            'curso.required'                    =>'O campo CURSO é obrigatório.',
+            'perfil_curso.required'             =>'O campo PERFIL DO CURSO é obrigatório.',
+            'perfil_egresso.required'           =>'O campo PERFIL DE EGRESSO é obrigatório.',
+            'acesso_curso.required'             =>'O campo FORMA DE ACESSO CURSO é obrigatório.',
+            'rep_grafica.required'              =>'O campo REPRESENTAÇÃO GRÁFICA é obrigatório.',
+            'sis_aval.required'                 =>'O campo SIS. DE AVALIAÇÃO APRENDIZAGEM é obrigatório.',
+            'sis_aval_projeto_curso.required'   =>'O campo SIS. DE AVALIAÇÃO DE PROJETO é obrigatório.',
+            'tcc.required'                      =>'O campo TCC é obrigatório.',
+            'estagio_curricular.required'       =>'O campo ESTÁGIO REGULAR é obrigatório.',
+            'pol_atend.required'                =>'O campo POLÍTICA DE ATENDIMENTO A PCD é obrigatório.',
+
+
+
+        ]);
         // dd($request->all());
         $dados = $request->all();
         ppc::create($dados);

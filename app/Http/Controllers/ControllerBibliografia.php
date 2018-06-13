@@ -41,6 +41,21 @@ class ControllerBibliografia extends Controller
      */
     public function store(Request $request)
     {
+
+        $this->validate($request,[
+            'ano'                                  =>'required|integer',
+            'titulo'                               =>'required',
+            'autor'                                =>'required',
+            'isbn'                                 =>'required',          
+            'editora'                              =>'required',  
+        ],[
+            'ano.required'                      =>'O campo ANO é obrigatório.',
+            'ano.integer'                       =>'Digite apenas números no campo ANO.',
+            'titulo.required'                   =>'O campo TITULO é obrigatório.',
+            'autor.required'                    =>'O campo AUTOR é obrigatório.',
+            'isbn.required'                     =>'O campo ISBN é obrigatório.',
+            'editora.required'                  =>'O campo EDITORA é obrigatório.',
+        ]);
         // dd($request->all());
         $dados = $request->all();
         Bibliografia::create($dados);

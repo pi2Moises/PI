@@ -37,6 +37,22 @@ class DisciplinaController extends Controller
      */
     public function store(Request $request)
     {
+            $this->validate($request,[
+            'disciplina'=>'required',
+            'descricao'=>'required',
+            'codigo'=>'required',
+            'semestre'=>'required|integer',
+            'carga_horaria'=>'required|integer'
+        ],[
+            'disciplina.required'=>'O campo DISCIPLINA é obrigatório.',
+            'descricao.required'=>'O campo DESCRIÇÃO é obrigatório.',
+            'codigo.required'=>'O campo CÓDIGO DA DISCIPILINA é obrigatório.',
+            'semestre.required'=>'O campo SEMESTRE é obrigatório.',
+            'semestre.integer'=>'Digite apenas números no campo SEMESTRE.',
+            'carga_horaria.required'=>'O campo CARGA HORÁRIA é obrigatório.',
+            'carga_horaria.integer'=>'Digite apenas números no campo CARGA HORÁRIA.',
+
+        ]);
         // dd($request->all());
         $dados = $request->all();
         disciplina::create($dados);

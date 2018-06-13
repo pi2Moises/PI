@@ -7,6 +7,16 @@
 			<h3 align="center">CADASTRAR BIBLIOGRAFIA</h3>
 			<thead>
 				<tr>
+					@if($errors->any())
+					<div class="alert alert-danger">
+						<ul>						
+							@foreach($errors->all() as $erro)
+								<li>{{$erro}}</li>
+							@endforeach						
+						{{-- {{'dados inválidos'}} --}}	
+						</ul>						
+					</div>
+					@endif
 					<th>
 						<div class="form-row">
 							<div class="form-group col-md-6">

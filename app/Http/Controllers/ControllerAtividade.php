@@ -36,6 +36,15 @@ class ControllerAtividade extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'aula'                  =>'required|integer',
+            'conteudo'              =>'required'
+        ],[
+            'aula.required'         =>'O campo AULA é obrigatório.',
+            'aula.integer'          =>'Digite apenas números no campo AULA.',
+            'conteudo.required'     =>'O campo CONTEÚDO é obrigatório.',
+
+        ]);
          // dd($request->all());
         $dados = $request->all();
         Atividade::create($dados);

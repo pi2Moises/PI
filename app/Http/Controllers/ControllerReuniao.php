@@ -42,6 +42,18 @@ class ControllerReuniao extends Controller
      */
     public function store(Request $request)
     {
+            $this->validate($request,[
+            'dt_reuniao'                        =>'required|integer',
+            'local_reuniao'                     =>'required',
+            'participantes'                     =>'required',
+            'deliberacoes'                      =>'required',          
+        ],[
+            'dt_reuniao.required'               =>'O campo DATA DA REUNIÃO é obrigatório.',
+            'dt_reuniao.integer'                =>'Digite apenas números no campo DATA DA REUNIÃO.',
+            'local_reuniao.required'            =>'O campo LOCAL DA REUNIÃO é obrigatório.',
+            'participantes.required'            =>'O campo PARTICIPANTES é obrigatório.',
+            'deliberacoes.required'             =>'O campo DELIBERAÇÕES é obrigatório.',
+        ]);
         $dados = $request->all();
         Reuniao::create($dados);
         echo "<script language=JavaScript>";

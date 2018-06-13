@@ -9,6 +9,16 @@
 			<h4 align="center">Identificação Nº: 12345</h4>
 			<thead>
 				<tr>
+					@if($errors->any())
+					<div class="alert alert-danger">
+						<ul>						
+							@foreach($errors->all() as $erro)
+								<li>{{$erro}}</li>
+							@endforeach						
+						{{-- {{'dados inválidos'}} --}}	
+						</ul>						
+					</div>
+					@endif
 					<th>
 						<div class="form-row">
 							<div class="form-group col-md-6">
@@ -22,11 +32,11 @@
 							</div>
 							<div class="form-group col-md-3">
 								<label for="inputCity">Ano</label>
-								<input type="text" class="form-control" name="ano" required>
+								<input type="text" class="form-control" name="ano" value="{{old('ano')}}" required>
 							</div>
 							<div class="form-group col-md-3">
 								<label for="inputCity">Semestre</label>
-								<input type="text" class="form-control" name="semestre" required>
+								<input type="text" class="form-control" name="semestre" value="{{old('semestre')}}" required>
 							</div>
 							<div class="form-group col-md-6">
 								<label for="inputState">Disciplina</label>
@@ -49,11 +59,11 @@
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="inputCity">Carga Horária Semestral</label>
-									<input type="text" class="form-control" name="carga_horaria_curso" placeholder="999" required>
+									<input type="text" class="form-control" name="carga_horaria_curso" placeholder="999" value="{{old('carga_horaria_curso')}}" required>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="inputState">Período do Curso</label>
-									<select name="periodo_curso" class="form-control">
+									<select name="periodo_curso" class="form-control" value="{{old('periodo_curso')}}" >
 										<option selected>Selecione</option>
 										<option>1º Semestre</option>
 										<option>2º Semestre</option>
@@ -78,15 +88,15 @@
 								</div>
 								<div class="form-group col-md-12">
 									<p align="center"><label for="inputCity">Ementa</label></p>
-									<textarea class="form-control" rows="4" name="ementa"></textarea>
+									<textarea class="form-control" rows="4" name="ementa" required>{{old('ementa')}}</textarea>
 								</div>
 								<div class="form-group col-md-12">
 									<p align="center"><label for="inputCity">Competência e Habilidades</label></p>
-									<textarea class="form-control" rows="4" name="compet_hab"></textarea>
+									<textarea class="form-control" rows="4" name="compet_hab" required>{{old('compet_hab')}}</textarea>
 								</div>
 								<div class="form-group col-md-12">
 									<p align="center"><label for="inputCity">Metodologia de Ensino</label></p>
-									<textarea class="form-control" rows="4" name="metod_ensino"></textarea>
+									<textarea class="form-control" rows="4" name="metod_ensino" required>{{old('metod_ensino')}}</textarea>
 								</div>
 								<p align="center"><label for="inputCity">Cronograma de Atividades</label></p>
 								<div class="form-group col-md-4">
@@ -107,11 +117,11 @@
 								</div>
 								<div class="form-group col-md-12">
 									<p align="center"><label for="inputCity">Avaliação</label></p>
-									<textarea class="form-control" rows="4" name="avaliacao"></textarea>
+									<textarea class="form-control" rows="4" name="avaliacao" required>{{old('avaliacao')}}</textarea>
 								</div>
 								<div class="form-group col-md-12">
 									<p align="center"><label for="inputCity">Bibliografia</label></p>
-									<textarea class="form-control" rows="4" name="bibliografia"></textarea>
+									<textarea class="form-control" rows="4" name="bibliografia" required>{{old('bibliografia')}}</textarea>
 								</div>								
 						<br>
 						<br>
